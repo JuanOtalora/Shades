@@ -1,7 +1,16 @@
 ﻿<Properties StartupConfiguration="{690277F5-76D9-57C0-5B47-AEBE0DCA146C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Library/PackageCache/com.unity.multiplayer-hlapi@1.0.2/Editor/Tools/Weaver/AssemblyInfo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ShadowController.cs">
     <Files>
-      <File FileName="Library/PackageCache/com.unity.multiplayer-hlapi@1.0.2/Editor/Tools/Weaver/AssemblyInfo.cs" Line="22" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="46" Column="11" />
+      <File FileName="Assets/Scripts/ShadowController.cs" Line="116" Column="5" />
+      <File FileName="Assets/Scripts/OpossumController.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/CameraBehaviour.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/BoxBehaviour.cs" Line="9" Column="1" />
+      <File FileName="Assets/Scripts/RealBox.cs" Line="12" Column="6" />
+      <File FileName="Assets/Scripts/CameraFollowPlayer.cs" Line="18" Column="83" />
+      <File FileName="Assets/Scripts/PlayerSelector.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/CameraFollowPlayerShadow.cs" Line="5" Column="38" />
+      <File FileName="Assets/Scripts/LightShadow.cs" Line="29" Column="132" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

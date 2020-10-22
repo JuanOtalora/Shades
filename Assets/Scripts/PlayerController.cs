@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ShadowController : MonoBehaviour
 {
   
     Rigidbody2D rgb;
@@ -10,12 +10,13 @@ public class PlayerController : MonoBehaviour
     public Vector2 movement;
     public Animator animatorC;
     Vector3 characterMovement;
-    public float jumpForce = 400f;
+    public float jumpForce = -400f;
     public CircleCollider2D groundFox;
     public bool grounded;
     public BoxCollider2D headFox;
     public bool isCrouched;
     public bool facingRight;
+    public bool shadowMode = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,22 @@ public class PlayerController : MonoBehaviour
             animatorC.SetFloat("Speed", 0);
         }
         DownWard();
+
+        float HorizontalMovement = Input.GetAxis("Horizontal");
+        Jump();
+        //if (Input.GetKey(KeyCode.DownArrow) && !isCrouched)
+        //{
+        //    Crouch();
+        //}
+        //else if (!Input.GetKey(KeyCode.DownArrow) && isCrouched)
+        //{
+        //    headFox.enabled = true;
+        //    isCrouched = false;
+        //    animatorC.SetBool("Crouched", false);
+        //    speed = 4.0f;
+        //}
+        Flip(HorizontalMovement);
+        CharacterMovement(Input.GetAxis("Horizontal"), Jump());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -73,25 +90,6 @@ public class PlayerController : MonoBehaviour
             animatorC.SetBool("Down", false);
             grounded = true;
         }
-    }
-
-    void FixedUpdate()
-    {
-        float HorizontalMovement = Input.GetAxis("Horizontal");
-        Jump();
-        if (Input.GetKey(KeyCode.DownArrow) && !isCrouched) {
-            Crouch();
-        }
-        else if(!Input.GetKey(KeyCode.DownArrow) && isCrouched)
-        {
-            headFox.enabled = true;
-            isCrouched = false;
-            animatorC.SetBool("Crouched", false);
-            speed = 4.0f;
-        }
-        Flip(HorizontalMovement);
-        CharacterMovement(Input.GetAxis("Horizontal"), Jump());
-
     }
 
     void Flip(float horizontal)
@@ -144,4 +142,6 @@ public class PlayerController : MonoBehaviour
         isCrouched = true;
         animatorC.SetBool("Crouched", true);
     }
+
+ 
 }
