@@ -8,6 +8,8 @@ public class CameraBehaviour : MonoBehaviour
 {
 
     new Camera camera;
+
+
     public bool flipHorizontal;
     void Awake()
     {

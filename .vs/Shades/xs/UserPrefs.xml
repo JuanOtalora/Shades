@@ -1,16 +1,22 @@
 ﻿<Properties StartupConfiguration="{690277F5-76D9-57C0-5B47-AEBE0DCA146C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ShadowController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/InstantiateShadow.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="46" Column="11" />
-      <File FileName="Assets/Scripts/ShadowController.cs" Line="116" Column="5" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="108" Column="9" />
+      <File FileName="Assets/Scripts/ShadowController.cs" Line="74" Column="10" />
       <File FileName="Assets/Scripts/OpossumController.cs" Line="41" Column="1" />
-      <File FileName="Assets/Scripts/CameraBehaviour.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/CameraBehaviour.cs" Line="11" Column="1" />
       <File FileName="Assets/Scripts/BoxBehaviour.cs" Line="9" Column="1" />
       <File FileName="Assets/Scripts/RealBox.cs" Line="12" Column="6" />
       <File FileName="Assets/Scripts/CameraFollowPlayer.cs" Line="18" Column="83" />
       <File FileName="Assets/Scripts/PlayerSelector.cs" Line="32" Column="1" />
       <File FileName="Assets/Scripts/CameraFollowPlayerShadow.cs" Line="5" Column="38" />
-      <File FileName="Assets/Scripts/LightShadow.cs" Line="29" Column="132" />
+      <File FileName="Assets/Scripts/LightShadow.cs" Line="31" Column="10" />
+      <File FileName="Assets/Scripts/Levers.cs" Line="38" Column="10" />
+      <File FileName="Assets/Scripts/Platform.cs" Line="33" Column="38" />
+      <File FileName="Library/PackageCache/com.unity.render-pipelines.high-definition@8.2.0/Runtime/RenderPipeline/HDRenderPipeline.cs" Line="735" Column="1" />
+      <File FileName="Library/PackageCache/com.unity.render-pipelines.universal@8.2.0/Runtime/UniversalAdditionalCameraData.cs" Line="285" Column="1" />
+      <File FileName="Assets/Scripts/LightsOn.cs" Line="23" Column="8" />
+      <File FileName="Assets/Scripts/InstantiateShadow.cs" Line="29" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

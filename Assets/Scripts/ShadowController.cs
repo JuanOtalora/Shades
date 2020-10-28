@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ShadowController : MonoBehaviour
 {
   
     Rigidbody2D rgb;
@@ -68,9 +68,9 @@ public class PlayerController : MonoBehaviour
         {
             animatorC.SetBool("Down", false);
             grounded = true;
-        }else if (other.gameObject.transform.tag == "Enemy")
+        }else if (other.gameObject.transform.tag == "Spike") 
         {
-
+            Destroy(this.gameObject);
         }
     }
 

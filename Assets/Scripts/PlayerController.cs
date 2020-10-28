@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShadowController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
   
     Rigidbody2D rgb;
@@ -17,6 +17,7 @@ public class ShadowController : MonoBehaviour
     public bool isCrouched;
     public bool facingRight;
     public bool shadowMode = false;
+    public bool onLadder = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,17 @@ public class ShadowController : MonoBehaviour
         //}
         Flip(HorizontalMovement);
         CharacterMovement(Input.GetAxis("Horizontal"), Jump());
+        if (onLadder)
+        {
+            CharacterMovement(0, Input.GetAxis("Vertical") * 2);
+            Debug.Log("entra a ladder");
+           rgb.gravityScale = 0;
+        }
+        else
+        {
+            Debug.Log("entra a cambio");
+            rgb.gravityScale = 2;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -65,6 +77,7 @@ public class ShadowController : MonoBehaviour
             //Do what you want when it collided with the ground
             animatorC.SetBool("Down", false);
             grounded = true;
+        
         }
         else if(other.gameObject.transform.tag == "Obstacle")
         {
@@ -84,12 +97,29 @@ public class ShadowController : MonoBehaviour
             //Do what you want when it collided with the ground
             animatorC.SetBool("Down", false);
             grounded = true;
+
         }
         else if (other.gameObject.transform.tag == "Obstacle")
         {
             animatorC.SetBool("Down", false);
             grounded = true;
+            onLadder = false;
         }
+        else if (other.gameObject.transform.tag == "Spike") 
+        {
+            Destroy(this.gameObject);
+        }else if (other.gameObject.transform.tag == "Ladder") 
+        {
+            onLadder = true;
+
+        }
+        else
+        {
+            Debug.Log("Ladder falseado");
+            onLadder = false;
+        }
+
+
     }
 
     void Flip(float horizontal)
