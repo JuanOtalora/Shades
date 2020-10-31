@@ -7,39 +7,38 @@ public class Platform : MonoBehaviour
     // Start is called before the first frame update
     private PlatformEffector2D pEffector;
     public float waitTime;
+    private bool bajando;
 
     void Start()
     {
         pEffector = GetComponent<PlatformEffector2D>();
+        bajando = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            waitTime = 0.5f;
-        }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (waitTime <= 0)
+            if (!bajando)
             {
 
                 pEffector.rotationalOffset = 180f;
-                waitTime = 0.5f;
+                bajando = true;
             }
             else
             {
-                Debug.Log("entraDelta");
-                waitTime -= Time.deltaTime;
+                bajando = false;
             }
         }
         if (Input.GetButtonDown("Jump"))
         {
+
             pEffector.rotationalOffset = 0f;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            Debug.Log("ENTRA");
             pEffector.rotationalOffset = 0f;
         }
     }

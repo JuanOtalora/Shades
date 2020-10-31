@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BoxBehaviour : MonoBehaviour
 {
-    private Rigidbody2D body;
+    public Rigidbody2D body;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,10 @@ public class BoxBehaviour : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
-            body.isKinematic = false;
+        {
+            Debug.Log("entraACaha");
+            body.AddForce(Vector2.right * 1);
+        }
     }
+
 }

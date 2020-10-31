@@ -8,6 +8,8 @@ public class LightShadow : MonoBehaviour
     public GameObject player;
     public GameObject shadowPlayer;
     public GameObject otherLamp;
+    public Animator animatorL;
+    public Animator animatorLS;
     float distance;
     float maxDistance = 1.0f;
 
@@ -27,6 +29,9 @@ public class LightShadow : MonoBehaviour
             {
                 player.transform.position = new Vector3(this.transform.position.x, this.transform.position.y+0.1f);
                 shadowPlayer.transform.position = new Vector3(otherLamp.transform.position.x, otherLamp.transform.position.y + 0.1f);
+                animatorL.SetBool("TurnedOn", true);
+                animatorLS.SetBool("TurnedOn", true);
+
             }
         }
 

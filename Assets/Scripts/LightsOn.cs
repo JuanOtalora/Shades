@@ -10,11 +10,12 @@ public class LightsOn : MonoBehaviour
     float maxDistance = 1.0f;
 
     public GameObject myPrefab;
-
+    public GameObject shadow;
+    private ShadowController script;
 
     void Start()
     {
-        
+        script = shadow.GetComponent<ShadowController>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class LightsOn : MonoBehaviour
                 Instantiate(myPrefab, new Vector3(56.65f, -16.925f, 0), Quaternion.identity);
                 Instantiate(myPrefab, new Vector3(62.39f, -16.925f, 0), Quaternion.identity);
                 Instantiate(myPrefab, new Vector3(67.53f, -16.925f, 0), Quaternion.identity);
+                script.ActivateShadow();
                
             }
         }

@@ -16,6 +16,7 @@ public class ShadowController : MonoBehaviour
     public BoxCollider2D headFox;
     public bool isCrouched;
     public bool facingRight;
+    public GameObject killzone;
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +71,7 @@ public class ShadowController : MonoBehaviour
             grounded = true;
         }else if (other.gameObject.transform.tag == "Spike") 
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -107,6 +108,15 @@ public class ShadowController : MonoBehaviour
         }
        
     }
+
+    public void ActivateShadow()
+    {
+        killzone.SetActive(false);
+        this.gameObject.SetActive(true);
+        this.transform.position = new Vector3(64.6f, -16.84f);
+
+    }
+
 
     void CharacterMovement(float h, float v)
     {

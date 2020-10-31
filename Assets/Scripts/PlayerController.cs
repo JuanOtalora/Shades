@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -90,6 +91,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.transform.tag == "Ground")
@@ -107,19 +109,32 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.transform.tag == "Spike") 
         {
-            Destroy(this.gameObject);
-        }else if (other.gameObject.transform.tag == "Ladder") 
-        {
-            onLadder = true;
+            SceneManager.LoadScene("FirstLevel");
 
+        }
+        else if (other.gameObject.transform.tag == "Ladder") 
+        {
+            animatorC.SetBool("OnLadder", true);
+            onLadder = true;
         }
         else
         {
-            Debug.Log("Ladder falseado");
+
             onLadder = false;
         }
 
 
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.transform.tag == "Ladder")
+        {
+            //Do what you want when it collided with the ground
+            onLadder = false;
+            animatorC.SetBool("OnLadder", false);
+
+        }
     }
 
     void Flip(float horizontal)
