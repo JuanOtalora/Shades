@@ -88,6 +88,11 @@ public class PlayerController : MonoBehaviour
         {
 
         }
+        else if (other.gameObject.transform.tag == "Platform")
+        {
+            animatorC.SetBool("Down", false);
+            grounded = true;
+        }
     }
 
 
@@ -117,6 +122,13 @@ public class PlayerController : MonoBehaviour
             animatorC.SetBool("OnLadder", true);
             onLadder = true;
         }
+        else if (other.gameObject.transform.tag == "Platform")
+        {
+            animatorC.SetBool("Down", false);
+            grounded = true;
+            transform.parent = other.transform;
+            onLadder = false;
+        }
         else
         {
 
@@ -133,6 +145,11 @@ public class PlayerController : MonoBehaviour
             //Do what you want when it collided with the ground
             onLadder = false;
             animatorC.SetBool("OnLadder", false);
+
+        }
+        else if (collision.gameObject.tag == "platform")
+        {
+            transform.parent = null;
 
         }
     }

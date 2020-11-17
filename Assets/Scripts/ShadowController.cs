@@ -73,6 +73,11 @@ public class ShadowController : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        else if (other.gameObject.transform.tag == "Platform")
+        {
+            animatorC.SetBool("Down", false);
+            grounded = true;
+        }
     }
 
 
@@ -89,6 +94,24 @@ public class ShadowController : MonoBehaviour
             animatorC.SetBool("Down", false);
             grounded = true;
         }
+        else if (other.gameObject.transform.tag == "Platform")
+        {
+            animatorC.SetBool("Down", false);
+            grounded = true;
+            transform.parent = other.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+       
+        
+        if (collision.gameObject.tag == "platform")
+        {
+            transform.parent = null;
+
+        }
+      
     }
 
 
