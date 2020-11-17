@@ -114,7 +114,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.transform.tag == "Spike") 
         {
-            SceneManager.LoadScene("FirstLevel");
+            Scene thisScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(thisScene.name);
 
         }
         else if (other.gameObject.transform.tag == "Ladder") 
