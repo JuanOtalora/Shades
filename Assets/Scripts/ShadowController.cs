@@ -153,7 +153,6 @@ public class ShadowController : MonoBehaviour
         if (rgb.velocity.y < 0)
         {
             animatorC.SetBool("Down", true);
-            animatorC.SetBool("Jump", false);
         }
     }
 
