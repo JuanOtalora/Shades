@@ -35,11 +35,9 @@ public class OpossumController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("EntraRRRR");
         if (other.gameObject.transform.tag == "Obstacle")
         {
             //Do what you want when it collided with the ground
-            Debug.Log("Entra");
             Flip();
         }
         else

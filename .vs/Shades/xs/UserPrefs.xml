@@ -1,7 +1,28 @@
 ﻿<Properties StartupConfiguration="{690277F5-76D9-57C0-5B47-AEBE0DCA146C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Library/PackageCache/com.unity.multiplayer-hlapi@1.0.2/Editor/Tools/Weaver/AssemblyInfo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CameraBehaviour.cs">
     <Files>
-      <File FileName="Library/PackageCache/com.unity.multiplayer-hlapi@1.0.2/Editor/Tools/Weaver/AssemblyInfo.cs" Line="22" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="101" Column="21" />
+      <File FileName="Assets/Scripts/ShadowController.cs" Line="103" Column="2" />
+      <File FileName="Assets/Scripts/OpossumController.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/CameraBehaviour.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/BoxBehaviour.cs" Line="25" Column="10" />
+      <File FileName="Assets/Scripts/RealBox.cs" Line="12" Column="6" />
+      <File FileName="Assets/Scripts/CameraFollowPlayer.cs" Line="18" Column="83" />
+      <File FileName="Assets/Scripts/PlayerSelector.cs" Line="30" Column="6" />
+      <File FileName="Assets/Scripts/CameraFollowPlayerShadow.cs" Line="5" Column="38" />
+      <File FileName="Assets/Scripts/LightShadow.cs" Line="35" Column="31" />
+      <File FileName="Assets/Scripts/Levers.cs" Line="7" Column="20" />
+      <File FileName="Assets/Scripts/Platform.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/LightsOn.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/InstantiateShadow.cs" Line="29" Column="35" />
+      <File FileName="Assets/Scripts/DisplayTutorialText.cs" Line="18" Column="6" />
+      <File FileName="Assets/Scripts/OpenDoor.cs" Line="43" Column="1" />
+      <File FileName="Assets/Scripts/FinishLevel.cs" Line="53" Column="51" />
+      <File FileName="Assets/Scripts/AnalyticsCustomEx.cs" Line="29" Column="1" />
+      <File FileName="Assets/MenuScript.cs" Line="10" Column="46" />
+      <File FileName="Assets/Scripts/LevelSelector.cs" Line="33" Column="46" />
+      <File FileName="Assets/Scripts/PauseMenu.cs" Line="55" Column="66" />
+      <File FileName="Assets/Scripts/MovingPlat.cs" Line="31" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

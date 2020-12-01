@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,12 +12,16 @@ public class PlayerController : MonoBehaviour
     public Vector2 movement;
     public Animator animatorC;
     Vector3 characterMovement;
-    public float jumpForce = 400f;
+    public float jumpForce = -400f;
     public CircleCollider2D groundFox;
     public bool grounded;
     public BoxCollider2D headFox;
     public bool isCrouched;
     public bool facingRight;
+    public bool shadowMode = false;
+    public bool onLadder = false;
+    private Scene currentScene;
+    private AudioSource footstep;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,8 @@ public class PlayerController : MonoBehaviour
         groundFox = this.GetComponent<CircleCollider2D>();
         headFox = this.GetComponent<BoxCollider2D>();
         grounded = true;
+        currentScene = SceneManager.GetActiveScene();
+        footstep = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,6 +47,31 @@ public class PlayerController : MonoBehaviour
             animatorC.SetFloat("Speed", 0);
         }
         DownWard();
+
+        float HorizontalMovement = Input.GetAxis("Horizontal");
+        Jump();
+        //if (Input.GetKey(KeyCode.DownArrow) && !isCrouched)
+        //{
+        //    Crouch();
+        //}
+        //else if (!Input.GetKey(KeyCode.DownArrow) && isCrouched)
+        //{
+        //    headFox.enabled = true;
+        //    isCrouched = false;
+        //    animatorC.SetBool("Crouched", false);
+        //    speed = 4.0f;
+        //}
+        Flip(HorizontalMovement);
+        CharacterMovement(Input.GetAxis("Horizontal"), Jump());
+        if (onLadder)
+        {
+            CharacterMovement(0, Input.GetAxis("Vertical") * 2);
+           rgb.gravityScale = 0;
+        }
+        else
+        {
+            rgb.gravityScale = 2;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,6 +81,7 @@ public class PlayerController : MonoBehaviour
             //Do what you want when it collided with the ground
             animatorC.SetBool("Down", false);
             grounded = true;
+        
         }
         else if(other.gameObject.transform.tag == "Obstacle")
         {
@@ -57,7 +91,23 @@ public class PlayerController : MonoBehaviour
         {
 
         }
+        else if (other.gameObject.transform.tag == "Spike")
+        {
+            AnalyticsResult deaths = Analytics.CustomEvent(
+                "LevelDie",
+                new Dictionary<string, object>
+                {
+                    {"Level", SceneManager.GetActiveScene().name},
+                    {"Position", transform.position}
+                }
+                );
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+        }
     }
+
 
 
     private void OnTriggerStay2D(Collider2D other)
@@ -67,31 +117,38 @@ public class PlayerController : MonoBehaviour
             //Do what you want when it collided with the ground
             animatorC.SetBool("Down", false);
             grounded = true;
+
         }
         else if (other.gameObject.transform.tag == "Obstacle")
         {
             animatorC.SetBool("Down", false);
             grounded = true;
+            onLadder = false;
         }
+
+        else if (other.gameObject.transform.tag == "Ladder") 
+        {
+            animatorC.SetBool("OnLadder", true);
+            onLadder = true;
+        }
+        else
+        {
+
+            onLadder = false;
+        }
+
+
     }
 
-    void FixedUpdate()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        float HorizontalMovement = Input.GetAxis("Horizontal");
-        Jump();
-        if (Input.GetKey(KeyCode.DownArrow) && !isCrouched) {
-            Crouch();
-        }
-        else if(!Input.GetKey(KeyCode.DownArrow) && isCrouched)
+        if (collision.gameObject.transform.tag == "Ladder")
         {
-            headFox.enabled = true;
-            isCrouched = false;
-            animatorC.SetBool("Crouched", false);
-            speed = 4.0f;
-        }
-        Flip(HorizontalMovement);
-        CharacterMovement(Input.GetAxis("Horizontal"), Jump());
+            //Do what you want when it collided with the ground
+            onLadder = false;
+            animatorC.SetBool("OnLadder", false);
 
+        }
     }
 
     void Flip(float horizontal)
@@ -144,4 +201,17 @@ public class PlayerController : MonoBehaviour
         isCrouched = true;
         animatorC.SetBool("Crouched", true);
     }
+
+    public void playStep()
+    {
+        footstep.Play();
+    }
+
+    public void stopStep()
+    {
+        footstep.Stop();
+    }
+
+
+
 }
