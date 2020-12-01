@@ -5,7 +5,7 @@ public class Levers : MonoBehaviour
 {
     public GameObject shadowPlayer;
     float distance;
-    float maxDistance = 1.0f;
+    float maxDistance = 2.0f;
     public GameObject spikes1;
     public GameObject spikes2;
     public GameObject spikes3;

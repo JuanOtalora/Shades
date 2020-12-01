@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public bool facingRight;
     public bool shadowMode = false;
     public bool onLadder = false;
+    private Scene currentScene;
+    private AudioSource footstep;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour
         groundFox = this.GetComponent<CircleCollider2D>();
         headFox = this.GetComponent<BoxCollider2D>();
         grounded = true;
+        currentScene = SceneManager.GetActiveScene();
+        footstep = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,12 +66,10 @@ public class PlayerController : MonoBehaviour
         if (onLadder)
         {
             CharacterMovement(0, Input.GetAxis("Vertical") * 2);
-            Debug.Log("entra a ladder");
            rgb.gravityScale = 0;
         }
         else
         {
-            Debug.Log("entra a cambio");
             rgb.gravityScale = 2;
         }
     }
@@ -88,6 +91,21 @@ public class PlayerController : MonoBehaviour
         {
 
         }
+        else if (other.gameObject.transform.tag == "Spike")
+        {
+            AnalyticsResult deaths = Analytics.CustomEvent(
+                "LevelDie",
+                new Dictionary<string, object>
+                {
+                    {"Level", SceneManager.GetActiveScene().name},
+                    {"Position", transform.position}
+                }
+                );
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+        }
     }
 
 
@@ -107,11 +125,7 @@ public class PlayerController : MonoBehaviour
             grounded = true;
             onLadder = false;
         }
-        else if (other.gameObject.transform.tag == "Spike") 
-        {
-            SceneManager.LoadScene("FirstLevel");
 
-        }
         else if (other.gameObject.transform.tag == "Ladder") 
         {
             animatorC.SetBool("OnLadder", true);
@@ -188,5 +202,16 @@ public class PlayerController : MonoBehaviour
         animatorC.SetBool("Crouched", true);
     }
 
- 
+    public void playStep()
+    {
+        footstep.Play();
+    }
+
+    public void stopStep()
+    {
+        footstep.Stop();
+    }
+
+
+
 }

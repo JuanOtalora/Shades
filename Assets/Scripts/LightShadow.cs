@@ -12,11 +12,12 @@ public class LightShadow : MonoBehaviour
     public Animator animatorLS;
     float distance;
     float maxDistance = 1.0f;
+    private AudioSource ignite;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        ignite = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class LightShadow : MonoBehaviour
                 shadowPlayer.transform.position = new Vector3(otherLamp.transform.position.x, otherLamp.transform.position.y + 0.1f);
                 animatorL.SetBool("TurnedOn", true);
                 animatorLS.SetBool("TurnedOn", true);
+                ignite.Play();
 
             }
         }

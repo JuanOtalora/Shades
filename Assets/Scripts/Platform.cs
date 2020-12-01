@@ -42,4 +42,5 @@ public class Platform : MonoBehaviour
             pEffector.rotationalOffset = 0f;
         }
     }
+
 }

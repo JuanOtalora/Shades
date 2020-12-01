@@ -64,15 +64,17 @@ public class ShadowController : MonoBehaviour
             //Do what you want when it collided with the ground
             animatorC.SetBool("Down", false);
             grounded = true;
+            transform.parent = null;
         }
         else if(other.gameObject.transform.tag == "Obstacle")
         {
             animatorC.SetBool("Down", false);
             grounded = true;
-        }else if (other.gameObject.transform.tag == "Spike") 
+        }else if (other.gameObject.transform.tag == "Darkness") 
         {
             this.gameObject.SetActive(false);
         }
+
     }
 
 
@@ -83,11 +85,27 @@ public class ShadowController : MonoBehaviour
             //Do what you want when it collided with the ground
             animatorC.SetBool("Down", false);
             grounded = true;
+            transform.parent = null;
         }
         else if (other.gameObject.transform.tag == "Obstacle")
         {
             animatorC.SetBool("Down", false);
             grounded = true;
+        }
+        else if (other.gameObject.transform.tag == "Platform")
+        {
+            animatorC.SetBool("Down", false);
+            grounded = true;
+            transform.parent = other.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.transform.tag == "Platform")
+        {
+            transform.parent = null;
+            Debug.Log("ALGO SUCEDE");
         }
     }
 

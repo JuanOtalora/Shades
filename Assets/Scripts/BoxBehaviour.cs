@@ -23,7 +23,6 @@ public class BoxBehaviour : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {
-            Debug.Log("entraACaha");
             body.AddForce(Vector2.right * 1);
         }
     }
