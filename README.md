@@ -11,4 +11,8 @@ The project was created using the technologies of Unity with minor scripting on 
   
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1200px-Unity_Technologies_logo.svg.png)
 
+Talking about the mechanics of the game, there needs to be some explanation for them. They are innovative in the way there is a reflection of the main chracter that the player can control and with that puzzles are build around it. In a more detailed way, the player can alternate between the main player and its shade to traverse the different worlds. These worlds are riddled with challenges thata require thea bility of both the main character and the reflection.
+
+![alt text](https://drbillwooten.files.wordpress.com/2016/01/self-reflection.jpg)
+
 </p>
