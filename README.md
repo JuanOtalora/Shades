@@ -8,5 +8,7 @@ Basic 2D platformer where you control both yourself and your shade to accomplish
 
 The project was created using the technologies of Unity with minor scripting on C# Language. The game, as stated before, follows the adventure of a single character that needs to get into the end of each level and collect a single gem to progress onwards the next level. This kind of narrative lacks in story but is not necessary a bad thing when the main goal is to focus on the mechanics. Little story but more direct light for the main advantage of the game.  
   
+  
+![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1200px-Unity_Technologies_logo.svg.png)
 
 </p>
